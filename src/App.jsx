@@ -1,14 +1,13 @@
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-
 import './App.css'
+import { Hero } from './components/Hero/Hero'
+import { Gallery } from './components/Gallery/Gallery'
+
 
 export const App = () => { 
   return (
-    <>
-      <h1>Movies App</h1>
-    </>
+    <div className="app">
+      <Hero />
+      <Gallery />
+    </div>
   )
 }
