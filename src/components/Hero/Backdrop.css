@@ -1,0 +1,12 @@
+.backdrop-image{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 100%;
+}
+.backdrop-image img{
+    width: 75%;
+    height: 100%;
+    object-fit: cover;
+}
