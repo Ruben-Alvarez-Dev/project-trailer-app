@@ -11,6 +11,7 @@
     justify-content: start;
     align-items: left;
     flex-direction: column;
+    z-index: 1;
 
 }
 

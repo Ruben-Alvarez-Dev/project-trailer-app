@@ -12,6 +12,7 @@
     flex-direction: column;
     justify-content: end;
     scroll-snap-align: center;
+    transition: all 0.5s;
 
 }
 

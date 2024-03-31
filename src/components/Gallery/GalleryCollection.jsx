@@ -1,10 +1,13 @@
-import './GalleryCollection.css'
-import poster from '../../assets/poster.jpg'
-import { CollectionItem } from './CollectionItem'
+import './GalleryCollection.css';
+import poster from '../../assets/poster.jpg';
+import { CollectionItem } from './CollectionItem';
 
+export const GalleryCollection = ({title }) => {
+  
+  
 
-export const GalleryCollection = ({title}) => {
   return (
+    
     <>
     <div className="reference">
       <h2 className="collection-title">{title}</h2>
