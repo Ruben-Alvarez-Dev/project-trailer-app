@@ -52,7 +52,7 @@ export const Gallery = () => {
 
   return (
     <div className="gallery" ref={galleryRef}>
-      <GradientBottom />
+      {/* <GradientBottom /> */}
       <div className="galleryStart"></div>
       <div className="galleryCollection" id="1">
         <GalleryCollection title="One" />
