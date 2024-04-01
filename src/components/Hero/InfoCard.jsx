@@ -2,11 +2,14 @@ import './InfoCard.css';
 import React from 'react';
 
 export const InfoCard = ({ activeMovie }) => {
+  
+  console.log(activeMovie);
+
   return (
     <div className="info-container">
       <div className="info-card">
         <div>
-          <h2>{activeMovie?.title}</h2>
+          <h2>{activeMovie?.title} ({activeMovie?.date.slice(0, 4)})</h2>
         </div>
         <div>
           PEGI * (ES) Comedy, Family, Fantasy 1h 57m
