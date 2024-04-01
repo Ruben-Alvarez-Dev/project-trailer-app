@@ -1,77 +1,69 @@
 import './Gallery.css';
-import React, { useState, useEffect, useRef } from 'react';
 import { GalleryCollection } from './GalleryCollection';
-import { GradientBottom } from './GradientBottom'
-export const Gallery = () => {
-  const [activeCollection, setActiveCollection] = useState('1');
-  const galleryRef = useRef(null);
+import { GradientBottom } from './GradientBottom';
+import { useEffect, useRef, useState } from 'react';
 
-  console.log(activeCollection);
+export const Gallery = ({ endpoints }) => {
+  const collectionRefs = useRef([]);
+  const [activeCollection, setActiveCollection] = useState(1);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveCollection(entry.target.id);
+          const index = parseInt(entry.target.dataset.index);
+          const collection = collectionRefs.current[index];
+          const collectionId = index + 1;
+
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.75) {
+            collection.style.opacity = '1';
+            setActiveCollection(collectionId);
+          } else if (collectionId < activeCollection) {
+            collection.style.opacity = '0';
+          } else {
+            collection.style.opacity = '0.5';
           }
         });
       },
       {
-        root: galleryRef.current,
+        root: null,
+        rootMargin: '0px',
         threshold: 0.75,
       }
     );
 
-    const galleryCollections = galleryRef.current.querySelectorAll('.galleryCollection');
-    galleryCollections.forEach((collection) => {
+    collectionRefs.current.forEach((collection) => {
       observer.observe(collection);
     });
 
     return () => {
-      observer.disconnect();
+      collectionRefs.current.forEach((collection) => {
+        observer.unobserve(collection);
+      });
     };
-  }, []);
+  }, [activeCollection]);
 
   useEffect(() => {
-    const galleryCollections = galleryRef.current.querySelectorAll('.galleryCollection');
-    galleryCollections.forEach((collection) => {
-      const collectionId = collection.id;
-      if (collectionId < activeCollection) {
-        collection.style.opacity = '0';
-        collection.style.transition = 'opacity 0.3s';
-      } else if (collectionId > activeCollection) {
-        collection.style.opacity = '0.5';
-        collection.style.transition = 'opacity 0.3s';
-      } else {
-        collection.style.opacity = '1';
-        collection.style.transition = 'opacity 0.3s';
-      }
-    });
+    console.log('Active Collection:', activeCollection);
   }, [activeCollection]);
 
   return (
-    <div className="gallery" ref={galleryRef}>
-      {/* <GradientBottom /> */}
+    <div className="gallery">
+      <GradientBottom />
       <div className="galleryStart"></div>
-      <div className="galleryCollection" id="1">
-        <GalleryCollection title="One" />
-      </div>
-      <div className="galleryCollection" id="2">
-        <GalleryCollection title="Two" />
-      </div>
-      <div className="galleryCollection" id="3">
-        <GalleryCollection title="Three" />
-      </div>
-      <div className="galleryCollection" id="4">
-        <GalleryCollection title="Four" />
-      </div>
-      <div className="galleryCollection" id="5">
-        <GalleryCollection title="Five" />
-      </div>
-      <div className="galleryCollection" id="6">
-        <GalleryCollection title="Six" />
-      </div>
+      {endpoints.map((endpoint, index) => (
+        <div
+          key={endpoint.id}
+          ref={(el) => (collectionRefs.current[index] = el)}
+          data-index={index}
+        >
+          <GalleryCollection
+            title={endpoint.title}
+            endpoint={endpoint.endpoint}
+            collectionId={index + 1}
+          />
+        </div>
+      ))}
       <div className="galleryEnd"></div>
     </div>
   );

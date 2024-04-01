@@ -1,10 +1,9 @@
-import './CollectionItem.css'
+import './CollectionItem.css';
 
-export const CollectionItem = ({poster}) => {
+export const CollectionItem = ({ item, onClick }) => {
   return (
-  
-    <div className="item">
-        <img src={poster} alt="poster" />
-    </div>  
-  )
-}
+    <div className="item" onClick={onClick}>
+      <img src={item.poster} alt="poster" />
+    </div>
+  );
+};

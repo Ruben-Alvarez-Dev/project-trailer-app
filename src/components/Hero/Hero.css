@@ -1,3 +1,6 @@
+*{
+    transition: all 0.3s;
+}
 .hero{
     background-color: rgba(255, 0, 0, 0.1);
     width: 100%;
