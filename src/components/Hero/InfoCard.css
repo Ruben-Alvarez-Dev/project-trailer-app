@@ -4,9 +4,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 33%;
+    width: 45%;
     height: calc(100% - 4vh);    
-    margin: 2vh;
+    margin: 1vh;
     display: flex;
     justify-content: start;
     align-items: left;
@@ -14,7 +14,6 @@
     z-index: 1;
 
 }
-
 .info-card{
     /* background-color: rgba(250, 235, 215, 0.1); */
     color: white;
@@ -25,6 +24,42 @@
     align-items: safe;
     width: 100%;
     height: 100%;
-    padding: 2vh 3vw;
+    padding: 1vh 2vw;
     
+}
+.title-date{
+    font-size: 2em;
+    font-weight: bold;
+}
+.language-genres-runtime{
+    font-size: 1em;
+    font-weight: regular;
+}
+.overview-title{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.overview-content{
+    font-size: 1em;
+    font-weight: regular;
+}
+.rating{
+    font-size: 1.5em;
+    font-weight: bold;
+    
+}
+.rating span{
+    padding: 2vw;
+}
+.rating button{
+    background-color: rgba(250, 235, 215, 0.2);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 0.5vh 1vw;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+.rating button:hover{
+    background-color: rgba(250, 235, 215, 0.5);
 }

@@ -5,7 +5,7 @@ import { AppContext } from '../../contexts/AppContext';
 
 export const GalleryCollection = ({ title, endpoint }) => {
   const [data, setData] = useState();
-  const { activeMovie, setActiveMovie } = useContext(AppContext);
+  const { setActiveMovie } = useContext(AppContext);
 
   const options = {
     method: 'GET',
@@ -37,8 +37,25 @@ export const GalleryCollection = ({ title, endpoint }) => {
     fetchData();
   }, []);
 
-  const handleItemClick = (item) => {
-    setActiveMovie(item);
+  const handleItemClick = async (item) => {
+    const response2 = await fetch(`https://api.themoviedb.org/3/movie/${item.id}?api_key=fc1f80b194f3f02aff9e1973e07807eb&language=en-US`, options);
+    const detailedData = await response2.json();
+    const genresArray = detailedData.genres.map((genre) => genre.name);
+    const genres = genresArray.join(', ');    
+    const runtime = `${Math.floor(detailedData.runtime / 60)}h ${detailedData.runtime % 60}min`;
+
+    const response3 = await fetch (`https://api.themoviedb.org/3/movie/${item.id}/videos?language=en-US`, options);
+    const videoData = await response3.json();
+    const videoKey = videoData.results[0].key;
+    
+    const fullMappedMovie = {
+      ...item,
+      genres,
+      runtime,
+      videoKey
+    }
+   
+    setActiveMovie(fullMappedMovie);
   };
 
   return (
