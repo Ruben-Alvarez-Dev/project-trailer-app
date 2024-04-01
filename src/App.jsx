@@ -1,6 +1,7 @@
 import './App.css';
 import { Hero } from './components/Hero/Hero';
 import { Gallery } from './components/Gallery/Gallery';
+import { Lightbox } from './components/Hero/Lightbox';
 import { collections } from './helpers/data';
 import { AppContext } from './contexts/AppContext';
 import { useState, useEffect } from 'react';

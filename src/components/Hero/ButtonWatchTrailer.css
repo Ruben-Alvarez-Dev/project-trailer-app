@@ -1,0 +1,12 @@
+.buttonWatchTrailer{
+    background-color: rgba(250, 235, 215, 0.2);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 0.5vh 1vw;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+.buttonWatchTrailer:hover{
+    background-color: rgba(250, 235, 215, 0.5);
+}
