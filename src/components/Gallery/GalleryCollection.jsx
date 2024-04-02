@@ -46,8 +46,10 @@ export const GalleryCollection = ({ title, endpoint }) => {
 
     const response3 = await fetch (`https://api.themoviedb.org/3/movie/${item.id}/videos?language=en-US`, options);
     const videoData = await response3.json();
-    const videoKey = videoData.results[0].key;
-    
+    const trailer = videoData.results.find((video) => video.type === "Trailer");
+    const noTrailer = videoData.results[0];
+    const videoKey = trailer ? trailer.key : noTrailer.key;
+
     const fullMappedMovie = {
       ...item,
       genres,
