@@ -1,5 +1,9 @@
 import React from "react";
 export const AppContext = React.createContext({
     activeMovie: null,
-    setActiveMovie: () => {}
+    setActiveMovie: () => {},
+    showLightbox: null,
+    setShowLightbox: () => {},
+    videoId: null,
+    setVideoId: () => {},
 });

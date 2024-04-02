@@ -1,12 +1,18 @@
 import { Light } from '@mui/icons-material'
 import './ButtonWatchTrailer.css'
-import React from 'react'
 import { Lightbox } from './Lightbox';
+import React, { useContext } from 'react'
+import { AppContext } from '../../contexts/AppContext'
+
 
 export const ButtonWatchTrailer = ({ movie }) => {
 
+  const { showLightbox, setShowLightbox } = useContext(AppContext);
+  const { videoId, setVideoId} = useContext(AppContext);
+
   const handleClick = () => {
-      alert('Watch Trailer')
+      setVideoId(movie.videoKey)
+      setShowLightbox(true);
   }
 
 

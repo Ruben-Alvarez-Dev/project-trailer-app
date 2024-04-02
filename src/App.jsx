@@ -7,7 +7,9 @@ import { AppContext } from './contexts/AppContext';
 import { useState, useEffect } from 'react';
 
 export const App = () => {
-  const [activeMovie, setActiveMovie] = useState(null);
+  const [ activeMovie, setActiveMovie ] = useState(null);
+  const [ showLightbox, setShowLightbox ] = useState(true);
+  const [ videoId, setVideoId ] = useState('');
 
   useEffect(() => {
     const fetchFirstMovie = async () => {
@@ -41,8 +43,13 @@ export const App = () => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ activeMovie, setActiveMovie }}>
+    <AppContext.Provider value={{ activeMovie, setActiveMovie, showLightbox, setShowLightbox, videoId, setVideoId }}>
       <div className="app">
+        {
+          (showLightbox) && (
+            <Lightbox videoId={videoId} setVideoId={setVideoId} />
+          )
+        }
         <Hero />
         <Gallery endpoints={collections} />
       </div>
