@@ -44,7 +44,6 @@ export const Gallery = ({ endpoints }) => {
   }, [activeCollection]);
 
   useEffect(() => {
-    console.log('Active Collection:', activeCollection);
   }, [activeCollection]);
 
   return (

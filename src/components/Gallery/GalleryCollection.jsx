@@ -26,8 +26,8 @@ export const GalleryCollection = ({ title, endpoint }) => {
         language: movie.original_language,
         overview: movie.overview,
         rating: movie.vote_average,
-        poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-        backdrop: `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`,
+        poster: `https://image.tmdb.org/t/p/w1280${movie.poster_path}`,
+        backdrop: `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`,
       };
     });
     setData(mappedData);
